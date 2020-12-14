@@ -134,7 +134,7 @@ public class Canvas {
     }
 
     public void eraseLine(int x1, int y1, int x2, int y2) {
-        Color original = this.graphic.getColor();
+        // Color original = this.graphic.getColor();
         this.graphic.setColor(this.backgroundColour);
         this.graphic.drawLine(x1, y1, x2, y2);
         this.canvas.repaint();
