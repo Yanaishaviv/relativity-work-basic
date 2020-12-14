@@ -17,7 +17,15 @@ public class Planet {
         this.thisEll = new Ellipse(this.xLoc, this.yLoc, this.radius, this.radius, "white");
     }
 
+    public Planet(double xLoc, double yLoc){
+        this.xLoc = xLoc;
+        System.out.println(xLoc);
+        this.yLoc = yLoc;
+        this.thisEll = new Ellipse(this.xLoc, this.yLoc, this.radius, this.radius, "white");
+    }
+
     public Planet() {
+        this.thisEll = new Ellipse(this.xLoc, this.yLoc, this.radius, this.radius, "white");
     }
 
     public double distance(Planet sec) {

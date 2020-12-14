@@ -45,17 +45,17 @@ public class Ellipse
         this.yPosition += deltaY;
     }
 
-    public void changeSizeTo(final double newDiameterX, final double newDiameterY) {
+    public void setSizeTo(final double newDiameterX, final double newDiameterY) {
         this.diameterX = newDiameterX;
         this.diameterY = newDiameterY;
     }
 
-    public void changeSize(final double deltaDiameter) {
+    public void setSize(final double deltaDiameter) {
         this.diameterX *= deltaDiameter;
         this.diameterY *= deltaDiameter;
     }
 
-    public void changeColor(final String newColor) {
+    public void setColor(final String newColor) {
         this.color = newColor;
     }
 
