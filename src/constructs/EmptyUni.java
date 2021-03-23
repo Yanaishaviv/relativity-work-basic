@@ -50,6 +50,10 @@ public class EmptyUni {
         return true;
     }
 
+    public void moveObsPOV(double distance){
+        
+    }
+
     public boolean addSpaceship(double speed) {
         try {
             observer = new SpaceShip((startOfRightSide + 3 * starRad *(numLines-1))/ 2, 450, speed);

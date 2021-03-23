@@ -1,5 +1,6 @@
 package constructs;
 
+import java.util.concurrent.TimeUnit;
 import draw.*;
 
 public class Planet {
@@ -17,7 +18,7 @@ public class Planet {
         this.thisEll = new Ellipse(this.xLoc, this.yLoc, this.radius, this.radius, "white");
     }
 
-    public Planet(double xLoc, double yLoc){
+    public Planet(double xLoc, double yLoc) {
         this.xLoc = xLoc;
         System.out.println(xLoc);
         this.yLoc = yLoc;
@@ -36,12 +37,33 @@ public class Planet {
         return Math.sqrt(x + y);
     }
 
-    public void draw(){
+    public void draw() {
         this.thisEll.erase();
         this.thisEll.moveTo(this.xLoc, this.yLoc);
         this.thisEll.draw();
     }
 
+    public void move(double distance, double direction, boolean wait) {
+        double yDis = distance * Math.sin(direction);
+        double xDis = distance * Math.cos(direction);
+        if (!wait) {
+            xLoc += xDis;
+            yLoc += yDis;
+            this.draw();
+            return;
+        }
+        int loopEnd = 100;
+        for (int i = 0; i < loopEnd; i++) {
+            xLoc += xDis / loopEnd;
+            yLoc -= yDis / loopEnd; // this is a minus sign because Y is upside down
+            this.draw();
+            try {
+                TimeUnit.MILLISECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
 
+    }
 
 }
