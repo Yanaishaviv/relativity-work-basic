@@ -36,8 +36,8 @@ public class SpaceShip extends Planet {
     }
 
     public String toString() {
-        String t = "Spaceship: {x location:" + this.xLoc + ", y location:" + this.yLoc + ", mass " + this.mass
-                + ", speed " + this.speed + ", direction" + this.direction + "}";
+        String t = "Spaceship: {x location: " + this.xLoc + ", y location: " + this.yLoc + ", mass: " + this.mass
+                + ", speed: " + this.speed + ", direction: " + this.direction + "}";
         return t;
     }
 

@@ -13,6 +13,6 @@ public class MainCode {
         SpaceShip obs = uni.observer;
         System.out.println(obs);
         obs.xLoc+=100;
-        System.out.println(uni.observer);
+        System.out.println(obs.xLoc);
     }
 }
