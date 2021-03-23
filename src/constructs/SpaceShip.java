@@ -51,7 +51,7 @@ public class SpaceShip extends Planet {
         for (int i = 0; i < loopEnd; i++){
             System.out.println("x " + xLoc + "y " + yLoc);
             xLoc += xDis/loopEnd;
-            yLoc -= yDis/loopEnd;
+            yLoc -= yDis/loopEnd; // this is a minus sign because Y is upside down
             this.draw();
             try{
             TimeUnit.MILLISECONDS.sleep(1);
