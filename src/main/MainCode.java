@@ -6,14 +6,13 @@ import draw.Ellipse;
 
 public class MainCode {
 
-    public static EmptyUni uni = new EmptyUni();
+    public static EmptyUni uni = new EmptyUni(); // the main universe where we calculate
 
     public static void main(String[] args) {
         uni.populate(800);
-        SpaceShip obs = constructs.EmptyUni.observer;
-        System.out.println(obs.xLoc + " " + obs.yLoc);
-        Ellipse ell = new Ellipse(60.0, 600.0, 100.0, 100.0, "white");
-        System.out.println(ell.getX() + " " + ell.getY());
-
+        SpaceShip obs = uni.observer;
+        System.out.println(obs);
+        obs.xLoc+=100;
+        System.out.println(uni.observer);
     }
 }

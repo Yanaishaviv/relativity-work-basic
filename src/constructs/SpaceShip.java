@@ -1,6 +1,5 @@
 package constructs;
 
-
 public class SpaceShip extends Planet {
     public double speed = 0;
     public double direction = 90;
@@ -12,7 +11,7 @@ public class SpaceShip extends Planet {
         this.thisEll.draw();
     }
 
-    public SpaceShip(double xLoc, double yLoc, double speed){
+    public SpaceShip(double xLoc, double yLoc, double speed) {
         super(xLoc, yLoc);
         System.out.println(xLoc);
         this.speed = speed;
@@ -34,6 +33,12 @@ public class SpaceShip extends Planet {
         ang = Math.toDegrees(ang);
         ang = this.direction - ang;
         return ang;
+    }
+
+    public String toString() {
+        String t = "Spaceship: {x location:" + this.xLoc + ", y location:" + this.yLoc + ", mass " + this.mass
+                + ", speed " + this.speed + ", direction" + this.direction + "}";
+        return t;
     }
 
 }
