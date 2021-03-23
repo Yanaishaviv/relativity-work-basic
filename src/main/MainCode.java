@@ -1,6 +1,8 @@
 package main;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
+
 import constructs.*;
 import draw.Ellipse;
 
@@ -12,7 +14,12 @@ public class MainCode {
         uni.populate(800);
         SpaceShip obs = uni.observer;
         System.out.println(obs);
-        obs.xLoc+=100;
         System.out.println(obs.xLoc);
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        obs.move(30);
     }
 }

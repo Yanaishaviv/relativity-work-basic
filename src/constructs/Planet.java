@@ -36,6 +36,12 @@ public class Planet {
         return Math.sqrt(x + y);
     }
 
+    public void draw(){
+        this.thisEll.erase();
+        this.thisEll.moveTo(this.xLoc, this.yLoc);
+        this.thisEll.draw();
+    }
+
 
 
 }
