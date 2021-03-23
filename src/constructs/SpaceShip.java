@@ -14,7 +14,6 @@ public class SpaceShip extends Planet {
 
     public SpaceShip(double xLoc, double yLoc, double speed) {
         super(xLoc, yLoc);
-        System.out.println(xLoc);
         this.speed = speed;
         this.thisEll.setColor("yellow");
         this.thisEll.draw();

@@ -20,7 +20,6 @@ public class Planet {
 
     public Planet(double xLoc, double yLoc) {
         this.xLoc = xLoc;
-        System.out.println(xLoc);
         this.yLoc = yLoc;
         this.thisEll = new Ellipse(this.xLoc, this.yLoc, this.radius, this.radius, "white");
     }
