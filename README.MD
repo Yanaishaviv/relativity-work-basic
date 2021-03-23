@@ -1,1 +1,1 @@
-this is the readme
+working mainly on some of my relativity for 5 points in the bagrut
