@@ -95,19 +95,19 @@ public class Ellipse
         return String.valueOf(this.xPosition) + " " + this.yPosition + " " + this.diameterX + " " + this.diameterY + " " + this.color;
     }
 
-    public void setX(final int x) {
+    public void setX(final double x) {
         this.xPosition = x;
     }
 
-    public void setY(final int y) {
+    public void setY(final double y) {
         this.yPosition = y;
     }
 
-    public void setDiaX(final int x) {
+    public void setDiaX(final double x) {
         this.diameterX = x;
     }
 
-    public void setDiaY(final int y) {
+    public void setDiaY(final double y) {
         this.diameterY = y;
     }
 

@@ -2,7 +2,7 @@ package constructs;
 
 
 public class SpaceShip extends Planet {
-    public double speed = 0;
+    public double speed = 0.8;
     public double direction = Math.PI/2;
 
     public SpaceShip(double speed) {
@@ -24,13 +24,12 @@ public class SpaceShip extends Planet {
      * the planet.
      *
      * @param pla the second planet
-     * @return the angle in degrees
+     * @return the angle in radians
      */
     public double angle(Planet pla) {
         double xDif = this.xLoc - pla.xLoc;
         double yDif = this.yLoc - pla.yLoc;
         double ang = Math.atan2(yDif, xDif);
-        ang = Math.toDegrees(ang);
         ang = this.direction - ang;
         return ang;
     }

@@ -17,8 +17,8 @@ import javax.swing.JPanel;
 
 public class Canvas {
     public static Canvas canvasSingleton;
-    public static final int WIDTH = 800;
-    public static final int HEIGHT = 600;
+    public static final int WIDTH = 500;
+    public static final int HEIGHT = 400;
     public static int DefaultWaitTime = 30;
     private JFrame frame = new JFrame();
     public Canvas.CanvasPane canvas = new Canvas.CanvasPane();

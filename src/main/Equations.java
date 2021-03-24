@@ -1,3 +1,5 @@
+package main;
+
 public class Equations {
 
     public static double lorentzFactor(double speed) {
@@ -8,6 +10,6 @@ public class Equations {
 
     public static void main(String[] args) {
         System.out.println(lorentzFactor(0.8));
-        System.out.println(1/0.6);
+        System.out.println(5/1.66666667);
     }
 }
