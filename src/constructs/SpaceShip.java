@@ -72,7 +72,7 @@ public class SpaceShip extends Planet {
             univ.moveObsPOV();
             univ.observer.addArrow();
             try {
-                TimeUnit.SECONDS.sleep(1);
+                TimeUnit.MILLISECONDS.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

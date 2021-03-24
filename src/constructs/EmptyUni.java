@@ -8,7 +8,7 @@ public class EmptyUni {
     public final double X_AXIS = Canvas.WIDTH; // how long is the universe in the X axis
     public final int NUM_LINES = 11; // how many lines are in each side
     public final int NUM_ROWS = 15; // how many rows are in each side
-    public final double STAR_RAD = 5; // what is the radius of each star
+    public final double STAR_RAD = 10; // what is the radius of each star
     public final double SPACESHIP_LOCATION = NUM_ROWS * 2 * STAR_RAD;
     public final double START_OF_RIGHT_SIDE = X_AXIS - 4 * STAR_RAD * (NUM_LINES - 0.5);
     public SpaceShip observer; // the observer watching the universe

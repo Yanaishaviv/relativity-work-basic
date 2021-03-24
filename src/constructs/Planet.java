@@ -2,11 +2,11 @@ package constructs;
 
 import java.util.concurrent.TimeUnit;
 import draw.*;
-import main.Equations;
+import main.*;
 
 public class Planet {
-    public double width = 5;
-    public double height = 5;
+    public double width = MainCode.uni.STAR_RAD;
+    public double height = MainCode.uni.STAR_RAD;
     public double mass = 10;
     public double xLoc = 0;
     public double yLoc = 0;
