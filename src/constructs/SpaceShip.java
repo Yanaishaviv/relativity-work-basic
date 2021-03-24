@@ -5,7 +5,7 @@ import main.MainCode;
 import java.util.concurrent.TimeUnit;
 
 public class SpaceShip extends Planet {
-    public double speed = 0.99999;
+    public double speed = 0.9;
     public double direction = Math.PI / 2 + 1;
 
     public SpaceShip(double speed) {
@@ -64,7 +64,7 @@ public class SpaceShip extends Planet {
 
     public static void circle() {
         double dest = Math.PI * 2;
-        double jumps = 50;
+        double jumps = 52;
         EmptyUni univ = main.MainCode.uni;
         for (int i = 0; i < jumps; i++) {
             univ.resetPOV();

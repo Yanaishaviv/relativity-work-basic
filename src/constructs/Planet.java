@@ -5,7 +5,6 @@ import draw.*;
 import main.Equations;
 
 public class Planet {
-    public double radius = 5;
     public double width = 5;
     public double height = 5;
     public double mass = 10;
