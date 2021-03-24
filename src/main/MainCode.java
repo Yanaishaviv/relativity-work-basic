@@ -18,6 +18,8 @@ public class MainCode {
             e.printStackTrace();
         }
         // uni.moveObsPOV();
-        SpaceShip.circle();
+        for (int i = 0; i < 50; i++) {
+            SpaceShip.circle();
+        }
     }
 }
