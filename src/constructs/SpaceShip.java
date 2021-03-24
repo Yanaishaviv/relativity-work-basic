@@ -1,9 +1,12 @@
 package constructs;
 
+import draw.Ellipse;
+import main.MainCode;
+import java.util.concurrent.TimeUnit;
 
 public class SpaceShip extends Planet {
-    public double speed = 0.8;
-    public double direction = Math.PI/2;
+    public double speed = 0.99999;
+    public double direction = Math.PI / 2 + 1;
 
     public SpaceShip(double speed) {
         super();
@@ -40,8 +43,40 @@ public class SpaceShip extends Planet {
         return t;
     }
 
-    public void move(double distance){
+    public void move(double distance) {
         this.move(distance, this.direction, true);
     }
 
+    public void addArrow() {
+        double distance = this.speed * 50;
+        double yDis = distance * Math.sin(direction);
+        double xDis = distance * Math.cos(direction);
+        new Ellipse(xDis + this.xLoc, -yDis + 
+        this.yLoc, this.width/2, this.height/2, "red").draw();
+    }
+
+    public void removeArrow(){
+        double distance = this.speed * 50;
+        double yDis = distance * Math.sin(direction);
+        double xDis = distance * Math.cos(direction);
+        new Ellipse(xDis + this.xLoc, -yDis + this.yLoc, this.width/2, this.height/2, "black").draw();
+    }
+
+    public static void circle() {
+        double dest = Math.PI * 2;
+        double jumps = 50;
+        EmptyUni univ = main.MainCode.uni;
+        for (int i = 0; i < jumps; i++) {
+            univ.resetPOV();
+            univ.observer.direction = i * dest / jumps;
+            univ.moveObsPOV();
+            univ.observer.addArrow();
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            univ.observer.removeArrow();
+        }
+    }
 }

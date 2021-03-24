@@ -10,7 +10,7 @@ public class EmptyUni {
     public final int NUM_ROWS = 15; // how many rows are in each side
     public final double STAR_RAD = 5; // what is the radius of each star
     public final double SPACESHIP_LOCATION = NUM_ROWS * 2 * STAR_RAD;
-    public final double START_OF_RIGHT_SIDE = X_AXIS - 4 * STAR_RAD * (NUM_LINES-0.5);
+    public final double START_OF_RIGHT_SIDE = X_AXIS - 4 * STAR_RAD * (NUM_LINES - 0.5);
     public SpaceShip observer; // the observer watching the universe
     public Planet[][] leftPlanets = new Planet[NUM_ROWS][NUM_LINES];
     public Planet[][] rightPlanets = new Planet[NUM_ROWS][NUM_LINES];
@@ -27,7 +27,8 @@ public class EmptyUni {
         try {
             for (int i = 0; i < rightPlanets.length; i++) {
                 for (int j = 0; j < rightPlanets[i].length; j++) {
-                    rightPlanets[i][j] = new Planet(10, 10, 4 * j * STAR_RAD + START_OF_RIGHT_SIDE, 4 * i * STAR_RAD);
+                    rightPlanets[i][j] = new Planet(STAR_RAD * 2, STAR_RAD * 2, 4 * j * STAR_RAD + START_OF_RIGHT_SIDE,
+                            4 * i * STAR_RAD);
                 }
             }
 
@@ -52,7 +53,20 @@ public class EmptyUni {
         return true;
     }
 
-    public void moveObsPOV(double distance) {
+    public void resetPOV() {
+        for (int i = 0; i < NUM_ROWS; i++) {
+            for (int j = 0; j < NUM_LINES; j++) {
+                rightPlanets[i][j].moveTo(4 * j * STAR_RAD + START_OF_RIGHT_SIDE, 4 * i * STAR_RAD);
+                rightPlanets[i][j].width = STAR_RAD;
+                rightPlanets[i][j].height = STAR_RAD;
+                leftPlanets[i][j].moveTo(4 * j * STAR_RAD, 4 * i * STAR_RAD);
+                leftPlanets[i][j].width  = STAR_RAD;
+                leftPlanets[i][j].height = STAR_RAD;
+            }
+        }
+    }
+
+    public void moveObsPOV() {
         for (int i = 0; i < NUM_ROWS; i++) {
             for (int j = 0; j < NUM_LINES; j++) {
                 rightPlanets[i][j].spaceShipPOV(observer);
@@ -69,8 +83,8 @@ public class EmptyUni {
 
     public boolean addSpaceship(double speed) {
         try {
-            observer = new SpaceShip(/*(START_OF_RIGHT_SIDE + 4 * STAR_RAD * (NUM_LINES - 0.5))*/X_AXIS / 2, SPACESHIP_LOCATION,
-                    speed);
+            observer = new SpaceShip(/* (START_OF_RIGHT_SIDE + 4 * STAR_RAD * (NUM_LINES - 0.5)) */X_AXIS / 2,
+                    SPACESHIP_LOCATION, speed);
         } catch (Exception e) {
             e.printStackTrace();
             return false;

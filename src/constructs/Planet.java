@@ -3,30 +3,33 @@ package constructs;
 import java.util.concurrent.TimeUnit;
 import draw.*;
 import main.Equations;
+
 public class Planet {
     public double radius = 5;
-    public double heightDivWidth = 1;
+    public double width = 5;
+    public double height = 5;
     public double mass = 10;
     public double xLoc = 0;
     public double yLoc = 0;
     public Ellipse thisEll;
 
     public Planet(double radius, double mass, double xLoc, double yLoc) {
-        this.radius = radius;
+        this.width = radius;
+        this.height = radius;
         this.mass = mass;
         this.yLoc = yLoc;
         this.xLoc = xLoc;
-        this.thisEll = new Ellipse(this.xLoc, this.yLoc, this.radius, this.radius, "white");
+        this.thisEll = new Ellipse(this.xLoc, this.yLoc, this.width, this.height, "white");
     }
 
     public Planet(double xLoc, double yLoc) {
         this.xLoc = xLoc;
         this.yLoc = yLoc;
-        this.thisEll = new Ellipse(this.xLoc, this.yLoc, this.radius, this.radius, "white");
+        this.thisEll = new Ellipse(this.xLoc, this.yLoc, this.width, this.height, "white");
     }
 
     public Planet() {
-        this.thisEll = new Ellipse(this.xLoc, this.yLoc, this.radius, this.radius, "white");
+        this.thisEll = new Ellipse(this.xLoc, this.yLoc, this.width, this.height, "white");
     }
 
     public double distance(Planet sec) {
@@ -40,31 +43,42 @@ public class Planet {
     public void prepare() {
         this.thisEll.erase();
         this.thisEll.moveTo(this.xLoc, this.yLoc);
-        this.thisEll.setDiaY(this.heightDivWidth * this.radius);
+        this.thisEll.setDiaY(this.height);
+        this.thisEll.setDiaX(this.width);
         // this.thisEll.draw();
     }
 
     /**
-     * move from the planet's frame of reference to the Spaceship's frame of reference.
+     * move from the planet's frame of reference to the Spaceship's frame of
+     * reference.
+     * 
      * @param observer the spaceship we are using for FOR
      */
-    public void spaceShipPOV(SpaceShip observer){
+    public void spaceShipPOV(SpaceShip observer) {
         double planetDistance = this.distance(observer);
-        planetDistance = planetDistance*Math.cos(observer.angle(this));
+        planetDistance = planetDistance * Math.cos(observer.angle(this));
         double speed = observer.speed;
         double lFactor = Equations.lorentzFactor(speed);
-        double spaceshipDistance = planetDistance/lFactor;
-        this.compressY(1/lFactor);
+        double spaceshipDistance = planetDistance / lFactor;
+        double alpha = observer.direction-observer.angle(this);
+        double yVelocity = observer.speed*Math.sin(alpha);
+        double xVelocity = observer.speed*Math.cos(alpha);
+        double xChange = 1/Equations.lorentzFactor(xVelocity);
+        double yChange = 1/Equations.lorentzFactor(yVelocity);
+        this.compressX(xChange);
+        this.compressY(yChange);
         this.move(planetDistance - spaceshipDistance, observer.direction, false);
     }
 
     /**
-     * move the planet a certain distance at a certain direction. 
-     * can be used differently for planets and spaceships by using the wait parameter.
-     * @param distance the distance to cover 
-     * @param direction the direction that the planet needs to move. 
-     * if it isn't a spaceship, the direction will be reversed
-     * @param wait if wait is turned on, the movement will be smooth, and in the direction given.
+     * move the planet a certain distance at a certain direction. can be used
+     * differently for planets and spaceships by using the wait parameter.
+     * 
+     * @param distance  the distance to cover
+     * @param direction the direction that the planet needs to move. if it isn't a
+     *                  spaceship, the direction will be reversed
+     * @param wait      if wait is turned on, the movement will be smooth, and in
+     *                  the direction given.
      */
     public void move(double distance, double direction, boolean wait) {
         double yDis = distance * Math.sin(direction);
@@ -90,8 +104,18 @@ public class Planet {
 
     }
 
-    public void compressY(double yChange){
-        this.heightDivWidth *= yChange;
+    public void moveTo(double x, double y){
+        this.prepare();
+        this.xLoc = x;
+        this.yLoc = y;
+    }
+
+    public void compressY(double yChange) {
+        this.height *= yChange;
+    }
+
+    public void compressX(double xChange) {
+        this.width *= xChange;
     }
 
 }
