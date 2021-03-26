@@ -59,9 +59,8 @@ public class Planet {
         double speed = observer.speed;
         double lFactor = Equations.lorentzFactor(speed);
         double spaceshipDistance = planetDistance / lFactor;
-        double alpha = observer.direction-observer.angle(this);
-        double yVelocity = observer.speed*Math.sin(alpha);
-        double xVelocity = observer.speed*Math.cos(alpha);
+        double yVelocity = observer.speed*Math.sin(observer.direction);
+        double xVelocity = observer.speed*Math.cos(observer.direction);
         double xChange = 1/Equations.lorentzFactor(xVelocity);
         double yChange = 1/Equations.lorentzFactor(yVelocity);
         this.compressX(xChange);
@@ -83,7 +82,7 @@ public class Planet {
         double yDis = distance * Math.sin(direction);
         double xDis = distance * Math.cos(direction);
         if (!wait) {
-            xLoc -= xDis;
+            xLoc += xDis;
             yLoc += yDis;
             this.prepare();
             return;

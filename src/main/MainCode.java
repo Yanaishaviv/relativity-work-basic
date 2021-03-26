@@ -16,9 +16,9 @@ public class MainCode {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // uni.moveObsPOV();
         for (int i = 0; i < 50; i++) {
             SpaceShip.circle();
         }
+
     }
 }

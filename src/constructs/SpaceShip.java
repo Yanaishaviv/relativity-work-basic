@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public class SpaceShip extends Planet {
     public double speed = 0.9;
-    public double direction = Math.PI / 2 + 1;
+    public double direction = 0;
 
     public SpaceShip(double speed) {
         super();
@@ -72,7 +72,7 @@ public class SpaceShip extends Planet {
             univ.moveObsPOV();
             univ.observer.addArrow();
             try {
-                TimeUnit.MILLISECONDS.sleep(500);
+                TimeUnit.MILLISECONDS.sleep(10000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
