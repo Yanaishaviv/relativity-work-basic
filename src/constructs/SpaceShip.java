@@ -32,8 +32,8 @@ public class SpaceShip extends Planet {
     public double angle(Planet pla) {
         double xDif = this.xLoc - pla.xLoc;
         double yDif = this.yLoc - pla.yLoc;
-        double ang = Math.atan2(yDif, xDif);
-        ang = this.direction - ang;
+        double ang = Math.atan2(yDif, -xDif);
+        ang = ang - this.direction;
         return ang;
     }
 

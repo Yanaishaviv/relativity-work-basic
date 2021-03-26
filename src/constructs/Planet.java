@@ -53,7 +53,9 @@ public class Planet {
      */
     public void spaceShipPOV(SpaceShip observer) {
         double planetDistance = this.distance(observer);
-        planetDistance = planetDistance * Math.cos(observer.angle(this));
+        double alpha = observer.angle(this);
+        double cosFactor =Math.cos(alpha);
+        planetDistance = planetDistance * cosFactor;
         double speed = observer.speed;
         double lFactor = Equations.lorentzFactor(speed);
         double spaceshipDistance = planetDistance / lFactor;
@@ -80,7 +82,7 @@ public class Planet {
         double yDis = distance * Math.sin(direction);
         double xDis = distance * Math.cos(direction);
         if (!wait) {
-            xLoc += xDis;
+            xLoc -= xDis;
             yLoc += yDis;
             this.prepare();
             return;

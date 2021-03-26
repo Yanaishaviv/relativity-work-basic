@@ -11,8 +11,6 @@ public class MainCode {
 
     public static void main(String[] args) {
         uni.populate(0.9);
-        System.out.println(uni.observer.xLoc);
-
         try {
             TimeUnit.SECONDS.sleep(5);
         } catch (Exception e) {
@@ -21,6 +19,7 @@ public class MainCode {
         for (int i = 0; i < 50; i++) {
             SpaceShip.circle();
         }
-
+        uni.observer.direction= 1;
+        uni.moveObsPOV();
     }
 }
