@@ -7,15 +7,13 @@ import main.*;
 public class Planet {
     public double width = MainCode.uni.STAR_RAD;
     public double height = MainCode.uni.STAR_RAD;
-    public double mass = 10;
     public double xLoc = 0;
     public double yLoc = 0;
     public Ellipse thisEll;
 
-    public Planet(double radius, double mass, double xLoc, double yLoc) {
+    public Planet(double radius, double xLoc, double yLoc) {
         this.width = radius;
         this.height = radius;
-        this.mass = mass;
         this.yLoc = yLoc;
         this.xLoc = xLoc;
         this.thisEll = new Ellipse(this.xLoc, this.yLoc, this.width, this.height, "white");

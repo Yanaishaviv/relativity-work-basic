@@ -11,6 +11,8 @@ public class MainCode {
 
     public static void main(String[] args) {
         uni.populate(0.9);
+        System.out.println(uni.observer.xLoc);
+
         try {
             TimeUnit.SECONDS.sleep(5);
         } catch (Exception e) {

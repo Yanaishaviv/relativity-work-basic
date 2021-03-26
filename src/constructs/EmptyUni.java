@@ -27,7 +27,7 @@ public class EmptyUni {
         try {
             for (int i = 0; i < rightPlanets.length; i++) {
                 for (int j = 0; j < rightPlanets[i].length; j++) {
-                    rightPlanets[i][j] = new Planet(STAR_RAD * 2, STAR_RAD * 2, 4 * j * STAR_RAD + START_OF_RIGHT_SIDE,
+                    rightPlanets[i][j] = new Planet(STAR_RAD * 2, 4 * j * STAR_RAD + START_OF_RIGHT_SIDE,
                             4 * i * STAR_RAD);
                 }
             }
@@ -43,7 +43,7 @@ public class EmptyUni {
         try {
             for (int i = 0; i < leftPlanets.length; i++) {
                 for (int j = 0; j < leftPlanets[i].length; j++) {
-                    leftPlanets[i][j] = new Planet(2 * STAR_RAD, 2 * STAR_RAD, 4 * j * STAR_RAD, 4 * i * STAR_RAD);
+                    leftPlanets[i][j] = new Planet(2 * STAR_RAD, 4 * j * STAR_RAD, 4 * i * STAR_RAD);
                 }
             }
         } catch (Exception e) {
@@ -57,11 +57,11 @@ public class EmptyUni {
         for (int i = 0; i < NUM_ROWS; i++) {
             for (int j = 0; j < NUM_LINES; j++) {
                 rightPlanets[i][j].moveTo(4 * j * STAR_RAD + START_OF_RIGHT_SIDE, 4 * i * STAR_RAD);
-                rightPlanets[i][j].width = STAR_RAD*2;
-                rightPlanets[i][j].height = STAR_RAD*2;
+                rightPlanets[i][j].width = STAR_RAD * 2;
+                rightPlanets[i][j].height = STAR_RAD * 2;
                 leftPlanets[i][j].moveTo(4 * j * STAR_RAD, 4 * i * STAR_RAD);
-                leftPlanets[i][j].width  = STAR_RAD*2;
-                leftPlanets[i][j].height = STAR_RAD*2;
+                leftPlanets[i][j].width = STAR_RAD * 2;
+                leftPlanets[i][j].height = STAR_RAD * 2;
             }
         }
     }
@@ -83,8 +83,7 @@ public class EmptyUni {
 
     public boolean addSpaceship(double speed) {
         try {
-            observer = new SpaceShip(/* (START_OF_RIGHT_SIDE + 4 * STAR_RAD * (NUM_LINES - 0.5)) */X_AXIS / 2,
-                    SPACESHIP_LOCATION, speed);
+            observer = new SpaceShip((X_AXIS - STAR_RAD * 1.5) / 2, SPACESHIP_LOCATION, speed);
         } catch (Exception e) {
             e.printStackTrace();
             return false;

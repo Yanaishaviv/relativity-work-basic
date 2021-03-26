@@ -38,7 +38,7 @@ public class SpaceShip extends Planet {
     }
 
     public String toString() {
-        String t = "Spaceship: {x location: " + this.xLoc + ", y location: " + this.yLoc + ", mass: " + this.mass
+        String t = "Spaceship: {x location: " + this.xLoc + ", y location: " + this.yLoc
                 + ", speed: " + this.speed + ", direction: " + this.direction + "}";
         return t;
     }
@@ -72,7 +72,7 @@ public class SpaceShip extends Planet {
             univ.moveObsPOV();
             univ.observer.addArrow();
             try {
-                TimeUnit.MILLISECONDS.sleep(10000);
+                TimeUnit.MILLISECONDS.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
