@@ -54,18 +54,18 @@ public class Planet {
     public void spaceShipPOV(SpaceShip observer) {
         double planetDistance = this.distance(observer);
         double alpha = observer.angle(this);
-        double cosFactor =Math.cos(alpha);
+        double cosFactor = Math.cos(alpha);
         planetDistance = planetDistance * cosFactor;
         double speed = observer.speed;
         double lFactor = Equations.lorentzFactor(speed);
         double spaceshipDistance = planetDistance / lFactor;
-        double yVelocity = observer.speed*Math.sin(observer.direction);
-        double xVelocity = observer.speed*Math.cos(observer.direction);
-        double xChange = 1/Equations.lorentzFactor(xVelocity);
-        double yChange = 1/Equations.lorentzFactor(yVelocity);
+        double yVelocity = observer.speed * Math.sin(observer.direction);
+        double xVelocity = observer.speed * Math.cos(observer.direction);
+        double xChange = 1 / Equations.lorentzFactor(xVelocity);
+        double yChange = 1 / Equations.lorentzFactor(yVelocity);
         this.compressX(xChange);
         this.compressY(yChange);
-        this.move(planetDistance - spaceshipDistance, observer.direction, false);
+        this.move(planetDistance - spaceshipDistance, -observer.direction, true);
     }
 
     /**
@@ -102,7 +102,7 @@ public class Planet {
 
     }
 
-    public void moveTo(double x, double y){
+    public void moveTo(double x, double y) {
         this.prepare();
         this.xLoc = x;
         this.yLoc = y;

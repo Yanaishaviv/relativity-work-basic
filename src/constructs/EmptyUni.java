@@ -6,7 +6,7 @@ import draw.Canvas;
 public class EmptyUni {
     public final double Y_AXIS = Canvas.HEIGHT; // how long is the universe in the Y axis
     public final double X_AXIS = Canvas.WIDTH; // how long is the universe in the X axis
-    public final int NUM_LINES = 12; // how many lines are in each side
+    public final int NUM_LINES = 5; // how many lines are in each side
     public final int NUM_ROWS = 15; // how many rows are in each side
     public final double STAR_RAD = 10; // what is the radius of each star
     public final double SPACESHIP_LOCATION = NUM_ROWS * 2 * STAR_RAD;
