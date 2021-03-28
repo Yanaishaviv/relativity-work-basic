@@ -3,17 +3,20 @@ package constructs;
 import java.util.function.Function;
 import draw.Canvas;
 
-public class EmptyUni {
-    public final double Y_AXIS = Canvas.HEIGHT; // how long is the universe in the Y axis
-    public final double X_AXIS = Canvas.WIDTH; // how long is the universe in the X axis
-    public final int NUM_LINES = 5; // how many lines are in each side
-    public final int NUM_ROWS = 15; // how many rows are in each side
-    public final double STAR_RAD = 10; // what is the radius of each star
-    public final double SPACESHIP_LOCATION = NUM_ROWS * 2 * STAR_RAD;
-    public final double START_OF_RIGHT_SIDE = X_AXIS - 4 * STAR_RAD * (NUM_LINES - 0.5);
-    public SpaceShip observer; // the observer watching the universe
-    public Planet[][] leftPlanets = new Planet[NUM_ROWS][NUM_LINES];
-    public Planet[][] rightPlanets = new Planet[NUM_ROWS][NUM_LINES];
+    /**
+    * the universe which holds the planets
+     */
+    public class EmptyUni {
+        public final double Y_AXIS = Canvas.HEIGHT; // how long is the universe in the Y axis
+        public final double X_AXIS = Canvas.WIDTH; // how long is the universe in the X axis
+        public final int NUM_LINES = 12; // how many lines are in each side
+        public final int NUM_ROWS = 15; // how many rows are in each side
+        public final double STAR_RAD = 10; // what is the radius of each star
+        public final double SPACESHIP_LOCATION = NUM_ROWS * 2 * STAR_RAD;
+        public final double START_OF_RIGHT_SIDE = X_AXIS - 4 * STAR_RAD * (NUM_LINES - 0.5);
+        public SpaceShip observer; // the observer watching the universe
+        public Planet[][] leftPlanets = new Planet[NUM_ROWS][NUM_LINES];
+        public Planet[][] rightPlanets = new Planet[NUM_ROWS][NUM_LINES];
 
     public EmptyUni() {
         System.out.println("new universe created");
@@ -66,16 +69,20 @@ public class EmptyUni {
         }
     }
 
+    /**
+     * move the POV to the observer's frame of reference
+     */
     public void moveObsPOV() {
-        for (int i = 0; i < NUM_ROWS; i++) {
+        for (int i = 0; i < NUM_ROWS; i++) { // for each star
             for (int j = 0; j < NUM_LINES; j++) {
-                rightPlanets[i][j].spaceShipPOV(observer);
+                rightPlanets[i][j].spaceShipPOV(observer); // move and compress to the right size
                 leftPlanets[i][j].spaceShipPOV(observer);
             }
-        }
+        } // i have 2 loops to make the drawing transition go faster, instead of calculating and 
+        // drawing each iteration
         for (int i = 0; i < NUM_ROWS; i++) {
             for (int j = 0; j < NUM_LINES; j++) {
-                rightPlanets[i][j].thisEll.draw();
+                rightPlanets[i][j].thisEll.draw(); // and then draw each planet
                 leftPlanets[i][j].thisEll.draw();
             }
         }

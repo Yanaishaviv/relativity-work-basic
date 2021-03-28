@@ -4,9 +4,12 @@ import draw.Ellipse;
 import main.MainCode;
 import java.util.concurrent.TimeUnit;
 
+    /**
+     * a class used to represent the spaceship observing the universe
+     */
 public class SpaceShip extends Planet {
-    public double speed = 0.9;
-    public double direction = 0;
+    public double speed = 0.9; // speed in units of C (1 equals speed of light)
+    public double direction = 0; // direction in radians
 
     public SpaceShip(double speed) {
         super();

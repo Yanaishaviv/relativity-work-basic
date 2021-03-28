@@ -52,20 +52,27 @@ public class Planet {
      * @param observer the spaceship we are using for FOR
      */
     public void spaceShipPOV(SpaceShip observer) {
-        double planetDistance = this.distance(observer);
-        double alpha = observer.angle(this);
+        double planetDistance = this.distance(observer); 
+        double alpha = observer.angle(this); // get the angle between the planet 
+        // and the observer's velocity
         double cosFactor = Math.cos(alpha);
-        planetDistance = planetDistance * cosFactor;
-        double speed = observer.speed;
-        double lFactor = Equations.lorentzFactor(speed);
-        double spaceshipDistance = planetDistance / lFactor;
+        planetDistance = planetDistance * cosFactor; // get the distance in the velocity's 
+        // direction
+        double speed = observer.speed; 
+        double lFactor = Equations.lorentzFactor(speed); // calculate the lorentz factor 
+        // for the spaceship's speed
+        double spaceshipDistance = planetDistance / lFactor; // get the distance in the 
+        // spaceship's frame of reference
         double yVelocity = observer.speed * Math.sin(observer.direction);
         double xVelocity = observer.speed * Math.cos(observer.direction);
         double xChange = 1 / Equations.lorentzFactor(xVelocity);
         double yChange = 1 / Equations.lorentzFactor(yVelocity);
-        this.compressX(xChange);
-        this.compressY(yChange);
-        this.move(planetDistance - spaceshipDistance, -observer.direction, true);
+        this.compressX(xChange); // these compression functions were 
+        // built to handle these parameter in these ways
+        this.compressY(yChange); 
+        // the function move was built to handle this direction correctly if the wait flag 
+        // is turned off, although this isn't the natural direction given to it
+        this.move(planetDistance - spaceshipDistance, observer.direction, false); 
     }
 
     /**
