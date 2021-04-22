@@ -50,6 +50,9 @@ public class SpaceShip extends Planet {
         this.move(distance, this.direction, true);
     }
 
+    /**
+     * add an arrow pointing to the direction of the spaceship.
+     */
     public void addArrow() {
         double distance = this.speed * 50;
         double yDis = distance * Math.sin(direction);
@@ -58,6 +61,9 @@ public class SpaceShip extends Planet {
         this.yLoc, this.width/2, this.height/2, "red").draw();
     }
 
+    /**
+     * remove the arrow showing the direction of the spaceship.
+     */
     public void removeArrow(){
         double distance = this.speed * 50;
         double yDis = distance * Math.sin(direction);
@@ -65,6 +71,9 @@ public class SpaceShip extends Planet {
         new Ellipse(xDis + this.xLoc, -yDis + this.yLoc, this.width/2, this.height/2, "black").draw();
     }
 
+    /**
+     * do a 360 degree rotation.
+     */
     public static void circle() {
         double dest = Math.PI * 2;
         double jumps = 52;

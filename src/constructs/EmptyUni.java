@@ -1,6 +1,5 @@
 package constructs;
 
-import java.util.function.Function;
 import draw.Canvas;
 
     /**
@@ -22,10 +21,20 @@ import draw.Canvas;
         System.out.println("new universe created");
     }
 
+    /**
+     * populate the universe with the constructs needed and start the simulation. at first, look 
+     * from an observer stationary to the stars.
+     * @param speed the speed of the spaceship.
+     * @return boolean indicating whether the simulation started successfully.
+     */
     public boolean populate(double speed) {
         return fillRightSide() && fillLeftSide() && addSpaceship(speed);
     }
 
+    /**
+     * fill the right side of the universe with planets.
+     * @return boolean indicating whether it worked.
+     */
     public boolean fillRightSide() {
         try {
             for (int i = 0; i < rightPlanets.length; i++) {
@@ -42,6 +51,10 @@ import draw.Canvas;
         return true;
     }
 
+    /**
+     * fill the left side of the universe with planets.
+     * @return boolean indicating whether it worked.
+     */
     public boolean fillLeftSide() {
         try {
             for (int i = 0; i < leftPlanets.length; i++) {
@@ -55,7 +68,10 @@ import draw.Canvas;
         }
         return true;
     }
-
+    
+    /**
+     * resets the state of the universe to the initial state, with an observer stationary to it.
+     */
     public void resetPOV() {
         for (int i = 0; i < NUM_ROWS; i++) {
             for (int j = 0; j < NUM_LINES; j++) {
@@ -88,6 +104,11 @@ import draw.Canvas;
         }
     }
 
+    /**
+     * create an observer in the form of a spaceship with the speed "speed"
+     * @param speed the spaceship's speed
+     * @return boolean indicating whether the observer is created successfully.
+     */
     public boolean addSpaceship(double speed) {
         try {
             observer = new SpaceShip((X_AXIS - STAR_RAD * 1.5) / 2, SPACESHIP_LOCATION, speed);
