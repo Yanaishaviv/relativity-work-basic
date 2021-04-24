@@ -37,12 +37,14 @@ public class Planet {
         return Math.sqrt(x + y);
     }
 
+    /**
+     * make sure the planet is ready for drawing
+     */
     public void prepare() {
         this.thisEll.erase();
         this.thisEll.moveTo(this.xLoc, this.yLoc);
         this.thisEll.setDiaY(this.height);
         this.thisEll.setDiaX(this.width);
-        // this.thisEll.draw();
     }
 
     /**
@@ -115,10 +117,16 @@ public class Planet {
         this.yLoc = y;
     }
 
+    /**
+     * compress the planet on the y axis
+     */
     public void compressY(double yChange) {
         this.height *= yChange;
     }
 
+    /**
+     * compress the planet on the x axis
+     */
     public void compressX(double xChange) {
         this.width *= xChange;
     }

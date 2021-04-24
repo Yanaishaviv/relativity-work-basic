@@ -18,10 +18,14 @@ public class MainCode {
             uni.observer.direction = 0; // set the observer's direction to right
             uni.observer.speed = 0.9; // and set the observer's speed to 0.9C
             uni.moveObsPOV(); // move to the POV of the observer's frame of reference
+            uni.observer.addArrow();
             TimeUnit.SECONDS.sleep(10); // wait
+            uni.observer.removeArrow();
             uni.resetPOV(); // reset the universe
             uni.observer.direction = Math.PI/2; // set the observer's direction to up
             uni.moveObsPOV(); // move to the POV of the observer's frame of reference
+            uni.observer.addArrow();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
